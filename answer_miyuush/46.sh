@@ -1,0 +1,1 @@
+cat const26.txt | mecab | awk '{gsub(/\*/,$1);print}' | awk -F, '{print $1, $(NF-1)}' | awk '{print $1, $3}' | awk '$1==$2{print $1}$1!=$2{print $1, $2}' | sed -E 's/([あ-ん]*) (.*)\1/(\2)\1/' | sed -E 's/(.*) (.*)/\1(\2)/' | tr -d \\n | sed 's/.....$//'
